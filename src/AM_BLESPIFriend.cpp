@@ -78,6 +78,7 @@ void AMController::loop() {
     ble.sendCommandCheckOK( F("AT+GATTADDSERVICE=uuid=0x1020") );
     ble.sendCommandWithIntReply( F("AT+GATTADDCHAR=UUID=0x0001,PROPERTIES=0x12,MIN_LEN=1,MAX_LEN=20,DATATYPE=bytearray,DESCRIPTION=out,VALUE=00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"), &_charid_tx);
     ble.sendCommandWithIntReply( F("AT+GATTADDCHAR=UUID=0x0002,PROPERTIES=0x04,MIN_LEN=1,MAX_LEN=20,DATATYPE=bytearray,DESCRIPTION=in,VALUE=00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00"), &_charid_rx);
+    ble.sendCommandCheckOK( F("AT+BLEBATTEN=1") );
     ble.reset();
     ble.echo(false);
 
@@ -190,6 +191,13 @@ void AMController::writeBuffer(uint8_t *buffer, int l) {
     idx += this_block_size;
   }
 }
+
+void AMController::updateBatteryLevel(uint8_t level) {
+	// A value between 0% and 100%
+	char messageBuffer[20];
+	sprintf(messageBuffer, "AT+BLEBATTVAL=%d",level);
+	ble.sendCommandCheckOK((char *)messageBuffer);
+} 
 
 
 void AMController::log(const char *msg) {

@@ -28,6 +28,7 @@ setNTPServerAddress		KEYWORD2
 dumpAlarms			KEYWORD2
 printTime			KEYWORD2
 now				KEYWORD2
+updateBatteryLevel	KEYWORD2
 
 
 #######################################

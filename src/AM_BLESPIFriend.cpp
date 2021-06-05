@@ -314,7 +314,9 @@ void AMController::processIncomingData(void) {
 
   uint8_t l = strlen(_remainBuffer);
 
+#ifdef DEBUG
   Serial.print("Full buffer before >"); Serial.print(_remainBuffer); Serial.println("<");
+#endif
 
   for (uint8_t i = 0; i < l; i++) {
 

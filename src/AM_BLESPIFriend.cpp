@@ -289,7 +289,9 @@ void AMController::disconnected() {
 
 void AMController::dataAvailable(char *data, size_t len) {
   strncat(_remainBuffer, data, len);
-  _dataAvailable = true;
+  if (strchr(_remainBuffer,'#') != NULL) {
+    _dataAvailable = true;
+  }
 }
 
 void AMController::processIncomingData(void) {
@@ -411,7 +413,6 @@ void BleGattRX(int32_t chars_id, uint8_t data[], uint16_t len) {
   for (uint16_t i = 0; i < len; i++) {
     Serial.print("0x"); Serial.print(data[i], HEX); Serial.print(" ");
   }
-
   Serial.println();
 #endif
   myGlobal->dataAvailable((char *)data, len);

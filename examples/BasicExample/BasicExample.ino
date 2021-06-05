@@ -65,8 +65,7 @@ void deviceDisconnected();
 */
 AMController amController(&doWork,&doSync,&processIncomingMessages,&processOutgoingMessages,&deviceConnected,&deviceDisconnected); 
  
-void setup()
-{
+void setup() {
   Serial.begin(115200);
   
   // Yellow LED on
@@ -91,7 +90,6 @@ void setup()
 }
 
 void loop() {
-  
   amController.loop();
 }
 

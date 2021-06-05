@@ -2,7 +2,7 @@
 
 This is an Arduino library to work with Arduino Manager app available for iOS and macOS.
 
- * Supported Boards: Any board with CC3000 Adafruit Bluefruit LE SPI Friend - Bluetooth Low Energy (https://www.adafruit.com/product/2633)
+ * Supported Boards: Any board with Adafruit Bluefruit LE SPI Friend - Bluetooth Low Energy (https://www.adafruit.com/product/2633)
  * Protocolo: BLE
  
 ## Arduino Manager
